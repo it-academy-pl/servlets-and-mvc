@@ -1,7 +1,7 @@
 package pl.itacademy.servlet;
 
-import pl.itacademy.dao.StudentJdbcDao;
 import pl.itacademy.model.Student;
+import pl.itacademy.service.StudentService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,14 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
 @WebServlet("/allStudents")
 public class AllStudentsServlet extends HttpServlet {
 
-    StudentJdbcDao studentJdbcDao = new StudentJdbcDao();
+    StudentService studentService = new StudentService();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -24,11 +23,9 @@ public class AllStudentsServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         List<Student> students = null;
-        try {
-            students = studentJdbcDao.getAllStudents();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        students = studentService.getAllStudents();
+
         out.println("<html><body><h1>List of students</h1><ul>");
         for (Student student : students) {
             out.println("<li>" + student.getName() + " " + student.getSurname() + "</li>");

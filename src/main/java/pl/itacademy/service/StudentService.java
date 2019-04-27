@@ -5,6 +5,8 @@ import pl.itacademy.model.Student;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.LongStream;
 
 public class StudentService {
     StudentJdbcDao studentJdbcDao = new StudentJdbcDao();
@@ -24,6 +26,15 @@ public class StudentService {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Student> getAllStudents() {
+        try {
+            return studentJdbcDao.getAllStudents();
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
         return null;
