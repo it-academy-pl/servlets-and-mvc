@@ -13,7 +13,11 @@ import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = "/searchStudent")
 public class SearchStudentServlet extends HttpServlet {
-    StudentService studentService = new StudentService();
+    StudentService studentService;
+
+    public SearchStudentServlet(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)

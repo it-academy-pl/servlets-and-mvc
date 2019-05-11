@@ -1,5 +1,6 @@
 package pl.itacademy.service;
 
+import pl.itacademy.dao.StudentDao;
 import pl.itacademy.dao.StudentJdbcDao;
 import pl.itacademy.model.Student;
 
@@ -9,10 +10,16 @@ import java.util.List;
 import java.util.stream.LongStream;
 
 public class StudentService {
-    StudentJdbcDao studentJdbcDao = new StudentJdbcDao();
+
+    private StudentDao studentDao;
+
+    public StudentService(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
+
     public void addStudent(Student student) {
         try {
-            studentJdbcDao.addStudent(student);
+            studentDao.addStudent(student);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -22,7 +29,7 @@ public class StudentService {
 
     public Student getByEmail(String email) {
         try {
-            return studentJdbcDao.getStudentByEmail(email);
+            return studentDao.getStudentByEmail(email);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -33,7 +40,7 @@ public class StudentService {
 
     public List<Student> getAllStudents() {
         try {
-            return studentJdbcDao.getAllStudents();
+            return studentDao.getAllStudents();
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }

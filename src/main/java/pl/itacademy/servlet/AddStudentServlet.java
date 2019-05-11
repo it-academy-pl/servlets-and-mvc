@@ -12,7 +12,11 @@ import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = "/addStudent")
 public class AddStudentServlet extends HttpServlet {
-    StudentService studentService = new StudentService();
+    private StudentService studentService;
+
+    public AddStudentServlet(StudentService studentService) {
+        this.studentService = studentService;
+    };
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {

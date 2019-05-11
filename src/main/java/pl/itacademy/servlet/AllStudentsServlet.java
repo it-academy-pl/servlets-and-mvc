@@ -18,7 +18,11 @@ import java.util.List;
 @WebServlet("/allStudents")
 public class AllStudentsServlet extends HttpServlet {
 
-    StudentService studentService = new StudentService();
+    private StudentService studentService;
+
+    public AllStudentsServlet(StudentService studentService) {
+        this.studentService = studentService;
+    };
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
