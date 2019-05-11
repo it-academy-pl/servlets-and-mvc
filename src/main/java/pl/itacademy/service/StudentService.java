@@ -1,5 +1,7 @@
 package pl.itacademy.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.itacademy.dao.StudentDao;
 import pl.itacademy.dao.StudentJdbcDao;
 import pl.itacademy.model.Student;
@@ -9,13 +11,12 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.LongStream;
 
+@Component
 public class StudentService {
 
+    @Autowired
     private StudentDao studentDao;
 
-    public StudentService(StudentDao studentDao) {
-        this.studentDao = studentDao;
-    }
 
     public void addStudent(Student student) {
         try {

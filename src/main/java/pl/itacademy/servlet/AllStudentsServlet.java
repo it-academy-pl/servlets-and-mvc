@@ -1,5 +1,6 @@
 package pl.itacademy.servlet;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.itacademy.model.Student;
 import pl.itacademy.service.StudentService;
 
@@ -20,6 +21,7 @@ public class AllStudentsServlet extends HttpServlet {
 
     private StudentService studentService;
 
+    @Autowired
     public AllStudentsServlet(StudentService studentService) {
         this.studentService = studentService;
     };

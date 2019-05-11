@@ -1,5 +1,6 @@
 package pl.itacademy.servlet;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.itacademy.dao.StudentJdbcDao;
 import pl.itacademy.model.Student;
 import pl.itacademy.service.StudentService;
@@ -15,6 +16,7 @@ import java.io.PrintWriter;
 public class SearchStudentServlet extends HttpServlet {
     StudentService studentService;
 
+    @Autowired
     public SearchStudentServlet(StudentService studentService) {
         this.studentService = studentService;
     }

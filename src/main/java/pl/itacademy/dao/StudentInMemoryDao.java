@@ -1,5 +1,6 @@
 package pl.itacademy.dao;
 
+import org.springframework.stereotype.Component;
 import pl.itacademy.model.Student;
 
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class StudentInMemoryDao implements StudentDao {
     private static List<Student> students = new ArrayList<>();
 
